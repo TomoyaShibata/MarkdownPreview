@@ -5,8 +5,8 @@ export default class CommentList extends React.Component {
     render() {
         return (
             <div className='commentList'>
-                <Comment author='Tomoya Shibata'>Surface Book Abyaaa.</Comment>
-                <Comment author='Zuihou'>Hatarake. by *author* comment.</Comment>
+                <Comment author='Tomoya Shibata'>Yugumo Abyaaa.</Comment>
+                <Comment author='Yugumo'>Majime ni hatarake.</Comment>
             </div>
         );
     }
