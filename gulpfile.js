@@ -5,6 +5,7 @@ var buffer = require('vinyl-buffer');
 var gulp = require('gulp');
 var node = require('node-dev');
 var source = require('vinyl-source-stream');
+var gulpStylus = require('gulp-stylus');
 
 function errorHandler(err) {
   console.log('Error: ' + err.message);
@@ -33,6 +34,12 @@ gulp.task('build', function() {
     .pipe(browserSync.reload({stream: true}));
 });
 
+gulp.task('stylus', function() {
+    return gulp.src('styl/**/*.styl')
+               .pipe(gulpStylus({compress: false}))
+               .pipe(gulp.dest('css/'));
+});
+
 // ローカルサーバーの起動
 gulp.task('server', function() {
   node(['./server.js']);
@@ -41,9 +48,10 @@ gulp.task('server', function() {
 // ファイル監視
 // ファイルに更新があったらビルドしてブラウザをリロードする
 gulp.task('watch', function() {
-  gulp.watch('./index.js', ['build']);
-  gulp.watch('./index.html', ['build']);
-  gulp.watch('./components/*.js', ['build']);
+    gulp.watch('styl/**/*.styl', ['stylus']);
+    gulp.watch('./index.js', ['build']);
+    gulp.watch('./index.html', ['build']);
+    gulp.watch('./components/*.js', ['build']);
 });
 
 // gulpコマンドで起動したときのデフォルトタスク
