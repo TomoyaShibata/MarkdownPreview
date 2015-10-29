@@ -33,9 +33,6 @@ export default class CommentForm extends React.Component {
                     <h2>Realtime preview</h2>
                     <span dangerouslySetInnerHTML={{__html: markedCommentText}} />
                 </div>
-                <div>
-                    <button type="button">Submit</button>
-                </div>
             </div>
         );
     }

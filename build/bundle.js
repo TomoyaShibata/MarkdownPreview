@@ -250,15 +250,6 @@ var CommentForm = (function (_React$Component) {
                         'Realtime preview'
                     ),
                     _react2['default'].createElement('span', { dangerouslySetInnerHTML: { __html: markedCommentText } })
-                ),
-                _react2['default'].createElement(
-                    'div',
-                    null,
-                    _react2['default'].createElement(
-                        'button',
-                        { type: 'button' },
-                        'Submit'
-                    )
                 )
             );
         }
