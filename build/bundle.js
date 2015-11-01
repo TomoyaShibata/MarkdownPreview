@@ -216,16 +216,25 @@ var CommentForm = (function (_React$Component) {
         key: 'componentDidMount',
         value: function componentDidMount() {
             this.setState({
-                newCommentTextLength: this.state.newCommentText.length
+                newCommentTextLength: this.state.newCommentText.length,
+                newCommentTextLines: this._getTextLines(this.state.newCommentText)
             });
         }
     }, {
         key: '_changeNewCommentText',
         value: function _changeNewCommentText(e) {
+            var commentText = e.target.value;
+
             this.setState({
-                newCommentText: e.target.value,
-                newCommentTextLength: e.target.value.length
+                newCommentText: commentText,
+                newCommentTextLength: commentText.length,
+                newCommentTextLines: this._getTextLines(commentText)
             });
+        }
+    }, {
+        key: '_getTextLines',
+        value: function _getTextLines(s) {
+            return s.split('\n').length;
         }
     }, {
         key: 'render',
@@ -269,6 +278,12 @@ var CommentForm = (function (_React$Component) {
                     null,
                     '文字数 ',
                     this.state.newCommentTextLength
+                ),
+                _react2['default'].createElement(
+                    'span',
+                    null,
+                    '行数 ',
+                    this.state.newCommentTextLines
                 )
             );
         }

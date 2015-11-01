@@ -8,21 +8,29 @@ export default class CommentForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            newCommentText: '# header1\r\n## header2'
+            newCommentText : '# header1\r\n## header2'
         };
     }
 
     componentDidMount() {
         this.setState({
-            newCommentTextLength: this.state.newCommentText.length
+            newCommentTextLength: this.state.newCommentText.length,
+            newCommentTextLines : this._getTextLines(this.state.newCommentText)
         });
     }
 
     _changeNewCommentText(e) {
+        var commentText = e.target.value
+
         this.setState({
-            newCommentText      : e.target.value,
-            newCommentTextLength: e.target.value.length
+            newCommentText      : commentText,
+            newCommentTextLength: commentText.length,
+            newCommentTextLines : this._getTextLines(commentText)
         })
+    }
+
+    _getTextLines(s) {
+        return s.split('\n').length;
     }
 
     render() {
@@ -44,6 +52,7 @@ export default class CommentForm extends React.Component {
                     <span dangerouslySetInnerHTML={{__html: markedCommentText}} />
                 </div>
                 <span>文字数 {this.state.newCommentTextLength}</span>
+                <span>行数 {this.state.newCommentTextLines}</span>
             </div>
         );
     }
