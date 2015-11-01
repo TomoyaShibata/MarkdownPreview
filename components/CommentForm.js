@@ -12,9 +12,16 @@ export default class CommentForm extends React.Component {
         };
     }
 
+    componentDidMount() {
+        this.setState({
+            newCommentTextLength: this.state.newCommentText.length
+        });
+    }
+
     _changeNewCommentText(e) {
         this.setState({
-            newCommentText: e.target.value
+            newCommentText      : e.target.value,
+            newCommentTextLength: e.target.value.length
         })
     }
 
@@ -23,6 +30,9 @@ export default class CommentForm extends React.Component {
 
         return (
             <div id="commentForm">
+                <div id="commentForm__box-edit-tag">
+                    <input type="text" />
+                </div>
                 <div id="commentForm__box-edit">
                     <h2>New comment</h2>
                     <textarea id="commentForm__box-edit__textarea" onChange={this._changeNewCommentText.bind(this)}>
@@ -33,6 +43,7 @@ export default class CommentForm extends React.Component {
                     <h2>Realtime preview</h2>
                     <span dangerouslySetInnerHTML={{__html: markedCommentText}} />
                 </div>
+                <span>文字数 {this.state.newCommentTextLength}</span>
             </div>
         );
     }

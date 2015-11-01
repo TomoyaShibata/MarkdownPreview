@@ -213,10 +213,18 @@ var CommentForm = (function (_React$Component) {
     }
 
     _createClass(CommentForm, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            this.setState({
+                newCommentTextLength: this.state.newCommentText.length
+            });
+        }
+    }, {
         key: '_changeNewCommentText',
         value: function _changeNewCommentText(e) {
             this.setState({
-                newCommentText: e.target.value
+                newCommentText: e.target.value,
+                newCommentTextLength: e.target.value.length
             });
         }
     }, {
@@ -227,6 +235,11 @@ var CommentForm = (function (_React$Component) {
             return _react2['default'].createElement(
                 'div',
                 { id: 'commentForm' },
+                _react2['default'].createElement(
+                    'div',
+                    { id: 'commentForm__box-edit-tag' },
+                    _react2['default'].createElement('input', { type: 'text' })
+                ),
                 _react2['default'].createElement(
                     'div',
                     { id: 'commentForm__box-edit' },
@@ -250,6 +263,12 @@ var CommentForm = (function (_React$Component) {
                         'Realtime preview'
                     ),
                     _react2['default'].createElement('span', { dangerouslySetInnerHTML: { __html: markedCommentText } })
+                ),
+                _react2['default'].createElement(
+                    'span',
+                    null,
+                    '文字数 ',
+                    this.state.newCommentTextLength
                 )
             );
         }
