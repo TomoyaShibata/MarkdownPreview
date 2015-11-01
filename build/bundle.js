@@ -278,12 +278,6 @@ var CommentForm = (function (_React$Component) {
                     null,
                     '文字数 ',
                     this.state.newCommentTextLength
-                ),
-                _react2['default'].createElement(
-                    'span',
-                    null,
-                    '行数 ',
-                    this.state.newCommentTextLines
                 )
             );
         }

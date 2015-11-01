@@ -52,7 +52,6 @@ export default class CommentForm extends React.Component {
                     <span dangerouslySetInnerHTML={{__html: markedCommentText}} />
                 </div>
                 <span>文字数 {this.state.newCommentTextLength}</span>
-                <span>行数 {this.state.newCommentTextLines}</span>
             </div>
         );
     }
