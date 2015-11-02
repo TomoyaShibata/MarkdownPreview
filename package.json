@@ -16,6 +16,7 @@
     "marked": "^0.3.5",
     "node-dev": "^2.6.2",
     "react": "^0.14.0",
+    "react-dom": "^0.14.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },
