@@ -290,6 +290,10 @@ module.exports = exports['default'];
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
 var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
@@ -298,9 +302,9 @@ var _componentsCommentBox = require('./components/CommentBox');
 
 var _componentsCommentBox2 = _interopRequireDefault(_componentsCommentBox);
 
-_reactDom2['default'].render(React.createElement(_componentsCommentBox2['default'], null), document.querySelector('#container'));
+_reactDom2['default'].render(_react2['default'].createElement(_componentsCommentBox2['default'], null), document.querySelector('#container'));
 
-},{"./components/CommentBox":2,"react-dom":8}],6:[function(require,module,exports){
+},{"./components/CommentBox":2,"react":307,"react-dom":8}],6:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
