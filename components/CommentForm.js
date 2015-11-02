@@ -1,5 +1,5 @@
-import React  from 'react'
-import Marked from 'marked'
+import React    from 'react';
+import Marked   from 'marked';
 
 /**
  * 新規コメント投稿Form
@@ -8,7 +8,7 @@ export default class CommentForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            newCommentText : '# header1\r\n## header2'
+            newCommentText : ''
         };
     }
 
@@ -43,9 +43,7 @@ export default class CommentForm extends React.Component {
                 </div>
                 <div id="commentForm__box-edit">
                     <h2>New comment</h2>
-                    <textarea id="commentForm__box-edit__textarea" onChange={this._changeNewCommentText.bind(this)}>
-                        {this.state.newCommentText}
-                    </textarea>
+                    <textarea id="commentForm__box-edit__textarea" onChange={this._changeNewCommentText.bind(this)} />
                 </div>
                 <div id="commentForm__box-preview">
                     <h2>Realtime preview</h2>

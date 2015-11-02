@@ -1,7 +1,7 @@
-import React      from 'react'
-import CommentBox from './components/CommentBox'
+import ReactDom   from 'react-dom';
+import CommentBox from './components/CommentBox';
 
-React.render(
+ReactDom.render(
      <CommentBox />,
      document.querySelector('#container')
 );
