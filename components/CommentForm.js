@@ -1,5 +1,6 @@
-import React    from 'react';
-import Marked   from 'marked';
+import React     from 'react';
+import Marked    from 'marked';
+import _         from 'lodash';
 
 /**
  * 新規コメント投稿Form
@@ -37,11 +38,6 @@ export default class CommentForm extends React.Component {
         var markedCommentText = Marked(this.state.newCommentText, { sanitize: true });
         var lineNumbers       = this.state.newCommentTextLines;
 
-        var doms = [];
-        for (var i = 1; i <= lineNumbers; i++) {
-            doms.push(<span className="l-line-number">{i}</span>);
-        }
-
         return (
             <div id="commentForm">
                 <div id="commentForm__box-edit-tag">
@@ -51,7 +47,7 @@ export default class CommentForm extends React.Component {
                     <h2>New comment</h2>
                     <div id="commentForm__wrapper-edit__box-edit">
                         <div id="commentForm__wrapper-edit__box-edit__box-line-numbers" className="md-horizontal">
-                            {doms}
+                            {_.range(0, this.state.newCommentTextLines).map(l => <span className="l-line-number">{l+1}</span>)}
                         </div>
                         <textarea id="commentForm__wrapper-edit__box-edit__textarea" onChange={this._changeNewCommentText.bind(this)} />
                     </div>
