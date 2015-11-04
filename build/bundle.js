@@ -240,6 +240,16 @@ var CommentForm = (function (_React$Component) {
         key: 'render',
         value: function render() {
             var markedCommentText = (0, _marked2['default'])(this.state.newCommentText, { sanitize: true });
+            var lineNumbers = this.state.newCommentTextLines;
+
+            var doms = [];
+            for (var i = 1; i <= lineNumbers; i++) {
+                doms.push(_react2['default'].createElement(
+                    'span',
+                    { className: 'l-line-number' },
+                    i
+                ));
+            }
 
             return _react2['default'].createElement(
                 'div',
@@ -251,29 +261,32 @@ var CommentForm = (function (_React$Component) {
                 ),
                 _react2['default'].createElement(
                     'div',
-                    { id: 'commentForm__box-edit' },
+                    { id: 'commentForm__wrapper-edit', className: 'md-horizontal' },
                     _react2['default'].createElement(
                         'h2',
                         null,
                         'New comment'
                     ),
-                    _react2['default'].createElement('textarea', { id: 'commentForm__box-edit__textarea', onChange: this._changeNewCommentText.bind(this) })
+                    _react2['default'].createElement(
+                        'div',
+                        { id: 'commentForm__wrapper-edit__box-edit' },
+                        _react2['default'].createElement(
+                            'div',
+                            { id: 'commentForm__wrapper-edit__box-edit__box-line-numbers', className: 'md-horizontal' },
+                            doms
+                        ),
+                        _react2['default'].createElement('textarea', { id: 'commentForm__wrapper-edit__box-edit__textarea', onChange: this._changeNewCommentText.bind(this) })
+                    )
                 ),
                 _react2['default'].createElement(
                     'div',
-                    { id: 'commentForm__box-preview' },
+                    { id: 'commentForm__box-preview', className: 'md-horizontal' },
                     _react2['default'].createElement(
                         'h2',
                         null,
                         'Realtime preview'
                     ),
                     _react2['default'].createElement('span', { dangerouslySetInnerHTML: { __html: markedCommentText } })
-                ),
-                _react2['default'].createElement(
-                    'span',
-                    null,
-                    '文字数 ',
-                    this.state.newCommentTextLength
                 )
             );
         }
