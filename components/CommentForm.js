@@ -9,7 +9,7 @@ export default class CommentForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            newCommentText : ''
+            newCommentText: ''
         };
     }
 
@@ -21,13 +21,13 @@ export default class CommentForm extends React.Component {
     }
 
     _changeNewCommentText(e) {
-        var commentText = e.target.value
+        const commentText = e.target.value;
 
         this.setState({
             newCommentText      : commentText,
             newCommentTextLength: commentText.length,
             newCommentTextLines : this._getTextLines(commentText)
-        })
+        });
     }
 
     _getTextLines(s) {
@@ -35,8 +35,8 @@ export default class CommentForm extends React.Component {
     }
 
     render() {
-        var markedCommentText = Marked(this.state.newCommentText, { sanitize: true });
-        var lineNumbers       = this.state.newCommentTextLines;
+        const markedCommentText = Marked(this.state.newCommentText, { sanitize: true });
+        const lineNumbers       = this.state.newCommentTextLines;
 
         return (
             <div id="commentForm">
@@ -47,7 +47,7 @@ export default class CommentForm extends React.Component {
                     <h2>New comment</h2>
                     <div id="commentForm__wrapper-edit__box-edit">
                         <div id="commentForm__wrapper-edit__box-edit__box-line-numbers" className="md-horizontal">
-                            {_.range(0, this.state.newCommentTextLines).map(l => <span className="l-line-number">{l+1}</span>)}
+                            {_.range(0, this.state.newCommentTextLines).map(l => <span className="l-line-number">{l + 1}</span>)}
                         </div>
                         <textarea id="commentForm__wrapper-edit__box-edit__textarea" onChange={this._changeNewCommentText.bind(this)} />
                     </div>
