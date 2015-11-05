@@ -1,0 +1,66 @@
+{
+    "rules": {
+        // 定数式による条件を警告
+        "no-constant-condition" : 1,
+        // JsDoc の構文を警告
+        "valid-jsdoc": [2, {
+            "requireReturn": false
+        }],
+        // consoleメソッドを注意
+        "no-console": 1,
+        // alert メソッドを許可
+        "no-alert": 0,
+        // debugger メソッドを注意
+        "no-debugger": 1,
+        // 正規表現におけるスペースの利用を許可
+        "no-regex-spaces": 0,
+        // シングルクオートを強制
+        "quotes": [2, "single"],
+        // 厳密等価演算子を強制
+        "eqeqeq": 2,
+        // 連続スペースの許可
+        "no-multi-spaces": 0,
+        // スペース許可
+        "key-spacing": 0,
+        // ドット記法以外（ブランケット記法）を許可
+        "dot-notation": 0,
+        // strict 強制を緩和
+        "strict": 0,
+        // 末尾セミコロンを強制
+        "semi": [2, always],
+        // const or let を強制
+        "no-var": 2,
+        // 再代入がない限り const を強制
+        "prefer-const": 2,
+
+        /**
+         * Stylistic Issues
+         */
+        // カンマ位置は末尾に強制
+        "comma-style": [1, "last"],
+        // カンマ前後のスペース自由化
+        "comma-spacing": 0,
+        // インデントスタイルは4スペースに強制
+        "indent": [1, 4, {
+            'SwitchCase': 1,
+        }],
+        "key-spacing": [1, {
+            "beforeColon": false,
+            "afterColon" : true,
+            "align"      : "colon"
+        }],
+        // 連続した空行を注意
+        "no-multiple-empty-lines": [1, { "max": 1 }],
+        // 関数呼び出しの際のスペースを注意
+        "no-spaced-func": 1
+    },
+
+    "ecmaFeatures": {
+        "jsx": true,
+        "modules": true
+    },
+
+    "env": {
+        "es6": true
+    }
+}
