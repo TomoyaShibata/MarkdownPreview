@@ -1,19 +1,19 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, '__esModule', {
+Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _react = require('react');
 
@@ -25,30 +25,39 @@ var Comment = (function (_React$Component) {
     function Comment() {
         _classCallCheck(this, Comment);
 
-        _get(Object.getPrototypeOf(Comment.prototype), 'constructor', this).apply(this, arguments);
+        _get(Object.getPrototypeOf(Comment.prototype), "constructor", this).apply(this, arguments);
     }
 
     _createClass(Comment, [{
-        key: 'render',
+        key: "render",
         value: function render() {
-            return _react2['default'].createElement(
-                'div',
-                { className: 'comment' },
-                _react2['default'].createElement(
-                    'h3',
-                    { className: 'commentAuthor' },
-                    this.props.author
+            return _react2["default"].createElement(
+                "li",
+                { className: "md-comment" },
+                _react2["default"].createElement(
+                    "span",
+                    { className: "md-comment-title" },
+                    "Comment title"
                 ),
-                this.props.children
+                _react2["default"].createElement(
+                    "span",
+                    { className: "md-comment-dateTime" },
+                    "2015/11/06 9:12"
+                ),
+                _react2["default"].createElement(
+                    "span",
+                    { className: "md-comment-text l-block" },
+                    "Comment text"
+                )
             );
         }
     }]);
 
     return Comment;
-})(_react2['default'].Component);
+})(_react2["default"].Component);
 
-exports['default'] = Comment;
-module.exports = exports['default'];
+exports["default"] = Comment;
+module.exports = exports["default"];
 
 },{"react":308}],2:[function(require,module,exports){
 'use strict';
@@ -136,30 +145,37 @@ var _Comment = require('./Comment');
 
 var _Comment2 = _interopRequireDefault(_Comment);
 
+var _lodash = require('lodash');
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
 var CommentList = (function (_React$Component) {
     _inherits(CommentList, _React$Component);
 
-    function CommentList() {
+    function CommentList(props) {
         _classCallCheck(this, CommentList);
 
-        _get(Object.getPrototypeOf(CommentList.prototype), 'constructor', this).apply(this, arguments);
+        _get(Object.getPrototypeOf(CommentList.prototype), 'constructor', this).call(this, props);
+        this.displayName = 'CommentList';
     }
 
     _createClass(CommentList, [{
         key: 'render',
         value: function render() {
             return _react2['default'].createElement(
-                'div',
-                { className: 'commentList' },
+                'nav',
+                { id: 'nav', className: 'l-inline-block' },
                 _react2['default'].createElement(
-                    _Comment2['default'],
-                    { author: 'Tomoya Shibata' },
-                    'Yugumo Abyaaa.'
-                ),
-                _react2['default'].createElement(
-                    _Comment2['default'],
-                    { author: 'Yugumo' },
-                    'Majime ni hatarake.'
+                    'ul',
+                    { id: 'nav__comment-list' },
+                    _react2['default'].createElement(
+                        'li',
+                        { className: 'md-comment' },
+                        _react2['default'].createElement('input', { type: 'text', className: 'md-keyword-search-comment' })
+                    ),
+                    _lodash2['default'].range(0, 10).map(function () {
+                        return _react2['default'].createElement(_Comment2['default'], null);
+                    })
                 )
             );
         }
@@ -171,7 +187,7 @@ var CommentList = (function (_React$Component) {
 exports['default'] = CommentList;
 module.exports = exports['default'];
 
-},{"./Comment":1,"react":308}],4:[function(require,module,exports){
+},{"./Comment":1,"lodash":7,"react":308}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -241,6 +257,11 @@ var CommentForm = (function (_React$Component) {
             return s.split('\n').length;
         }
     }, {
+        key: '_saveNewComment',
+        value: function _saveNewComment() {
+            localStorage.setItem('newComment', this.state.newCommentText);
+        }
+    }, {
         key: 'render',
         value: function render() {
             var markedCommentText = (0, _marked2['default'])(this.state.newCommentText, { sanitize: true });
@@ -256,7 +277,7 @@ var CommentForm = (function (_React$Component) {
                 ),
                 _react2['default'].createElement(
                     'div',
-                    { id: 'commentForm__wrapper-edit', className: 'md-horizontal' },
+                    { id: 'commentForm__wrapper-edit', className: 'l-horizontal' },
                     _react2['default'].createElement(
                         'h2',
                         null,
@@ -267,7 +288,7 @@ var CommentForm = (function (_React$Component) {
                         { id: 'commentForm__wrapper-edit__box-edit' },
                         _react2['default'].createElement(
                             'div',
-                            { id: 'commentForm__wrapper-edit__box-edit__box-line-numbers', className: 'md-horizontal' },
+                            { id: 'commentForm__wrapper-edit__box-edit__box-line-numbers', className: 'l-horizontal' },
                             _lodash2['default'].range(0, this.state.newCommentTextLines).map(function (l) {
                                 return _react2['default'].createElement(
                                     'span',
@@ -281,13 +302,18 @@ var CommentForm = (function (_React$Component) {
                 ),
                 _react2['default'].createElement(
                     'div',
-                    { id: 'commentForm__box-preview', className: 'md-horizontal' },
+                    { id: 'commentForm__box-preview', className: 'l-horizontal' },
                     _react2['default'].createElement(
                         'h2',
                         null,
                         'Realtime preview'
                     ),
                     _react2['default'].createElement('span', { dangerouslySetInnerHTML: { __html: markedCommentText } })
+                ),
+                _react2['default'].createElement(
+                    'button',
+                    { type: 'button', onClick: this._saveNewComment.bind(this) },
+                    'Save'
                 )
             );
         }

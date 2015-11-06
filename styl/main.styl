@@ -1,3 +1,11 @@
+@charset "utf-8"
+
+/*----------------------------------------------------------
+ common tag style
+----------------------------------------------------------*/
+body
+    margin 0
+
 textarea
     border none
     &:focus
@@ -6,6 +14,43 @@ input
     &:focus
         outline 0
 
+ul
+    list-style-type none
+
+/*----------------------------------------------------------
+ common layout class
+----------------------------------------------------------*/
+.l-block
+    display block
+
+.l-inline-block
+    display inline-block
+
+/*----------------------------------------------------------
+ commentList
+----------------------------------------------------------*/
+border-color-nav-common = #ccc
+
+#nav
+    width        230px
+    border-right 1px solid border-color-nav-common
+
+    &__comment-list
+        padding 0
+
+.md-comment
+    border-bottom 1px solid border-color-nav-common
+
+.md-keyword-search-comment
+    height        26px
+    border-radius 13px
+    border        1px solid border-color-nav-common
+    padding       0 10px
+
+
+/*----------------------------------------------------------
+ commentForm
+----------------------------------------------------------*/
 #commentForm
     height 400px
 
@@ -14,7 +59,7 @@ input
         padding    0 3px
         text-align right
 
-    .md-horizontal
+    .l-horizontal
         vertical-align top
         display        inline-block
 

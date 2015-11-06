@@ -1,6 +1,6 @@
-import React     from 'react';
-import Marked    from 'marked';
-import _         from 'lodash';
+import React  from 'react';
+import Marked from 'marked';
+import _      from 'lodash';
 
 /**
  * 新規コメント投稿Form
@@ -34,6 +34,10 @@ export default class CommentForm extends React.Component {
         return s.split('\n').length;
     }
 
+    _saveNewComment() {
+        localStorage.setItem('newComment', this.state.newCommentText);
+    }
+
     render() {
         const markedCommentText = Marked(this.state.newCommentText, { sanitize: true });
         const lineNumbers       = this.state.newCommentTextLines;
@@ -43,19 +47,20 @@ export default class CommentForm extends React.Component {
                 <div id="commentForm__box-edit-tag">
                     <input type="text" />
                 </div>
-                <div id="commentForm__wrapper-edit" className="md-horizontal">
+                <div id="commentForm__wrapper-edit" className="l-horizontal">
                     <h2>New comment</h2>
                     <div id="commentForm__wrapper-edit__box-edit">
-                        <div id="commentForm__wrapper-edit__box-edit__box-line-numbers" className="md-horizontal">
+                        <div id="commentForm__wrapper-edit__box-edit__box-line-numbers" className="l-horizontal">
                             {_.range(0, this.state.newCommentTextLines).map(l => <span className="l-line-number">{l + 1}</span>)}
                         </div>
                         <textarea id="commentForm__wrapper-edit__box-edit__textarea" onChange={this._changeNewCommentText.bind(this)} />
                     </div>
                 </div>
-                <div id="commentForm__box-preview" className="md-horizontal">
+                <div id="commentForm__box-preview" className="l-horizontal">
                     <h2>Realtime preview</h2>
                     <span dangerouslySetInnerHTML={{__html: markedCommentText}} />
                 </div>
+                <button type="button" onClick={this._saveNewComment.bind(this)}>Save</button>
             </div>
         );
     }
