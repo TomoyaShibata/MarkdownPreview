@@ -8,6 +8,7 @@ var source      = require('vinyl-source-stream');
 var gulpStylus  = require('gulp-stylus');
 var plumber     = require('gulp-plumber');
 var notify      = require('gulp-notify');
+var livereload  = require('gulp-livereload');
 
 function errorHandler(err) {
     console.log('Error: ' + err.message);
