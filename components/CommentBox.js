@@ -8,9 +8,8 @@ export default class CommentBox extends React.Component {
     }
 
     render() {
-        return(
+        return (
             <div className='commentBox'>
-                <h2>User Comments.</h2>
                 <CommentList />
                 <CommentForm />
             </div>
