@@ -1,5 +1,5 @@
 # ReactTraning
-This is MarkdownEditor utilizing a React.js and ES6.
+This is MarkdownEditor utilizing a React.js and ES6.  
 ReactTraning with ES6 is the coding and the tools for the practice of React.js.
 
 # Installation
