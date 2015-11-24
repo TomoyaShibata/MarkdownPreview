@@ -10,12 +10,24 @@ textarea
     border none
     &:focus
         outline 0
+        margine 0 0
+
 input
     &:focus
         outline 0
 
 ul
     list-style-type none
+
+code
+    padding       0 5px
+    border-radius 3px
+    border        1px solid #000
+    font-family   Menlo,
+                  Monaco,
+                  Consolas,
+                  'Courier New',
+                  monospace
 
 /*----------------------------------------------------------
  common layout class
@@ -24,15 +36,16 @@ ul
     display block
 
 .l-inline-block
-    display inline-block
+    display        inline-block
+    vertical-align top
 
 /*----------------------------------------------------------
  header
 ----------------------------------------------------------*/
-border-color-header-common = #ccc
+$border-color-header-common = #eee
 
 #header
-    border-bottom 1px solid border-color-header-common
+    border-bottom 1px solid $border-color-header-common
 
 .md-app-title
     font-size 15px
@@ -40,14 +53,13 @@ border-color-header-common = #ccc
 /*----------------------------------------------------------
  commentList
 ----------------------------------------------------------*/
-border-color-nav-common = #ccc
-
+$border-color-nav-common = #eee
 #nav
     width        230px
-    border-right 1px solid border-color-nav-common
+    border-right 1px solid $border-color-nav-common
 
     &__comment-list
-        padding 0
+        padding 10px
 
 .md-comment
     border-bottom 1px solid border-color-nav-common
@@ -55,20 +67,33 @@ border-color-nav-common = #ccc
 .md-keyword-search-comment
     height        26px
     border-radius 13px
-    border        1px solid border-color-nav-common
+    border        none
     padding       0 10px
 
+.am-fade-opacity-enter
+    -webkit-transition 1s ease-in
+
+    &-active
+        opacity 1
+
+.am-fade-opacity-leave
+    -webkit-transition .5s ease-out
+
+    &-active
+        opacity 0
 
 /*----------------------------------------------------------
  commentForm
 ----------------------------------------------------------*/
 #commentForm
-    height 400px
+    height 800px
+    padding 10px
 
     .l-line-number
-        display    block
-        padding    0 3px
-        text-align right
+        display     block
+        padding     0 3px
+        text-align  right
+        line-height 1.4
 
     .l-horizontal
         vertical-align top
@@ -76,7 +101,7 @@ border-color-nav-common = #ccc
 
     &__wrapper-edit
         background     orange
-        width          45%
+        width          600px
         height         100%
 
         &__box-edit
@@ -89,15 +114,16 @@ border-color-nav-common = #ccc
                 padding-top 3px
 
             &__textarea
-                font-size  13px
-                width      90%
-                height     300px
-                background #333
-                color      #fff
+                font-size    13px
+                width        90%
+                height       700px
+                background   #333
+                color        #fff
                 border-left  1px solid #666
                 border-right 1px solid #666
+                line-height  1.4
 
     &__box-preview
         background lightblue
-        width      45%
+        width      600px
         height     100%
