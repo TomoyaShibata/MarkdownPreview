@@ -1,0 +1,27 @@
+{
+  "coverage": "100%",
+  "expectCount": 19,
+  "actualCount": 19,
+  "files": {
+    "components/Comment.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "components/CommentBox.js": {
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
+    },
+    "components/CommentForm.js": {
+      "expectCount": 8,
+      "actualCount": 8,
+      "undocumentLines": []
+    },
+    "components/CommentList.js": {
+      "expectCount": 6,
+      "actualCount": 6,
+      "undocumentLines": []
+    }
+  }
+}

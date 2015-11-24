@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">components/CommentForm.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/Comment.js~Comment.html">Comment</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/CommentBox.js~CommentBox.html">CommentBox</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/CommentForm.js~CommentForm.html">CommentForm</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/components/CommentList.js~CommentList.html">CommentList</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">components/CommentForm.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React  from &apos;react&apos;;
+import Marked from &apos;marked&apos;;
+import _      from &apos;lodash&apos;;
+
+/**
+ * &#x65B0;&#x898F;&#x30B3;&#x30E1;&#x30F3;&#x30C8;&#x4F5C;&#x6210;&#x30D5;&#x30A9;&#x30FC;&#x30E0;&#x30AF;&#x30E9;&#x30B9;
+ */
+export default class CommentForm extends React.Component {
+    /**
+     * &#x30B3;&#x30F3;&#x30B9;&#x30C8;&#x30E9;&#x30AF;&#x30BF;
+     * @override
+     */
+    constructor(props) {
+        super(props);
+
+        /**
+         * @type {Object}
+         */
+        this.state = {
+            newCommentText: &apos;&apos;
+        };
+    }
+
+    /**
+     * @override
+     */
+    componentDidMount() {
+        this.setState({
+            newCommentTextLength: this.state.newCommentText.length,
+            newCommentTextLines : this._getTextLines(this.state.newCommentText)
+        });
+    }
+
+    /**
+     * &#x5165;&#x529B;&#x3055;&#x308C;&#x305F;&#x30B3;&#x30E1;&#x30F3;&#x30C8;&#x3092; state &#x306B;&#x53CD;&#x6620;&#x3059;&#x308B;
+     * @param  {Object} e &#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;
+     */
+    _changeNewCommentText(e) {
+        const commentText = e.target.value;
+
+        this.setState({
+            newCommentText      : commentText,
+            newCommentTextLength: commentText.length,
+            newCommentTextLines : this._getTextLines(commentText)
+        });
+    }
+
+    /**
+     * &#x5165;&#x529B;&#x3055;&#x308C;&#x305F;&#x30B3;&#x30E1;&#x30F3;&#x30C8;&#x306E;&#x884C;&#x6570;&#x3092;&#x8FD4;&#x5374;&#x3059;&#x308B;
+     * @param  {String} s &#x30B3;&#x30E1;&#x30F3;&#x30C8;
+     * @return {Number}   &#x30B3;&#x30E1;&#x30F3;&#x30C8;&#x306E;&#x884C;&#x6570;
+     */
+    _getTextLines(s) {
+        return s.split(&apos;\n&apos;).length;
+    }
+
+    /**
+     * &#x30B3;&#x30E1;&#x30F3;&#x30C8;&#x3092; localStorage &#x306B;&#x4FDD;&#x5B58;&#x3059;&#x308B;
+     */
+    _saveNewComment() {
+        /**
+         * @todo &#x30CF;&#x30FC;&#x30C9;&#x30B3;&#x30FC;&#x30C7;&#x30A3;&#x30F3;&#x30B0;&#x3092;&#x64A4;&#x5EC3;&#x3057;&#x3061;&#x3083;&#x3093;&#x3068;&#x4E00;&#x610F;&#x306A;&#x30AD;&#x30FC;&#x3067;&#x4FDD;&#x5B58;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;
+         */
+        localStorage.setItem(&apos;newComment&apos;, this.state.newCommentText);
+    }
+
+    /**
+     * @override
+     */
+    render() {
+        const markedCommentText = Marked(this.state.newCommentText, { sanitize: true });
+        const lineNumbers       = this.state.newCommentTextLines;
+
+        return (
+            &lt;div id=&quot;commentForm&quot; className=&quot;l-inline-block&quot;&gt;
+                &lt;div id=&quot;commentForm__box-edit-tag&quot;&gt;
+                    &lt;input type=&quot;text&quot; /&gt;
+                &lt;/div&gt;
+                &lt;div id=&quot;commentForm__wrapper-edit&quot; className=&quot;l-horizontal&quot;&gt;
+                    &lt;h2&gt;New comment&lt;/h2&gt;
+                    &lt;div id=&quot;commentForm__wrapper-edit__box-edit&quot;&gt;
+                        &lt;div id=&quot;commentForm__wrapper-edit__box-edit__box-line-numbers&quot; className=&quot;l-horizontal&quot;&gt;
+                            {_.range(0, this.state.newCommentTextLines).map(l =&gt; &lt;span className=&quot;l-line-number&quot;&gt;{l + 1}&lt;/span&gt;)}
+                        &lt;/div&gt;
+                        &lt;textarea id=&quot;commentForm__wrapper-edit__box-edit__textarea&quot; onChange={this._changeNewCommentText.bind(this)} /&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div id=&quot;commentForm__box-preview&quot; className=&quot;l-horizontal&quot;&gt;
+                    &lt;h2&gt;Realtime preview&lt;/h2&gt;
+                    &lt;span dangerouslySetInnerHTML={{__html: markedCommentText}} /&gt;
+                &lt;/div&gt;
+                &lt;button type=&quot;button&quot; onClick={this._saveNewComment.bind(this)}&gt;Save&lt;/button&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.3)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

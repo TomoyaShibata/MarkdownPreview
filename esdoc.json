@@ -1,0 +1,5 @@
+{
+    "source": "./components",
+    "destination": "./esdoc",
+    "access": ["public", "protected", "private"]
+}
