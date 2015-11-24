@@ -3,16 +3,27 @@ import Marked from 'marked';
 import _      from 'lodash';
 
 /**
- * 新規コメント投稿Form
+ * 新規コメント作成フォームクラス
  */
 export default class CommentForm extends React.Component {
+    /**
+     * コンストラクタ
+     * @override
+     */
     constructor(props) {
         super(props);
+
+        /**
+         * @type {Object}
+         */
         this.state = {
             newCommentText: ''
         };
     }
 
+    /**
+     * @override
+     */
     componentDidMount() {
         this.setState({
             newCommentTextLength: this.state.newCommentText.length,
@@ -20,6 +31,10 @@ export default class CommentForm extends React.Component {
         });
     }
 
+    /**
+     * 入力されたコメントを state に反映する
+     * @param  {Object} e イベントオブジェクト
+     */
     _changeNewCommentText(e) {
         const commentText = e.target.value;
 
@@ -30,20 +45,34 @@ export default class CommentForm extends React.Component {
         });
     }
 
+    /**
+     * 入力されたコメントの行数を返却する
+     * @param  {String} s コメント
+     * @return {Number}   コメントの行数
+     */
     _getTextLines(s) {
         return s.split('\n').length;
     }
 
+    /**
+     * コメントを localStorage に保存する
+     */
     _saveNewComment() {
+        /**
+         * @todo ハードコーディングを撤廃しちゃんと一意なキーで保存できるようにする
+         */
         localStorage.setItem('newComment', this.state.newCommentText);
     }
 
+    /**
+     * @override
+     */
     render() {
         const markedCommentText = Marked(this.state.newCommentText, { sanitize: true });
         const lineNumbers       = this.state.newCommentTextLines;
 
         return (
-            <div id="commentForm">
+            <div id="commentForm" className="l-inline-block">
                 <div id="commentForm__box-edit-tag">
                     <input type="text" />
                 </div>
