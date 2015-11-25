@@ -49,7 +49,6 @@ $bg-header     = #009688;
 $color-header  = #fff;
 $height-header = 50px
 
-
 .md-header
     background  $bg-header
     box-shadow  0 2px 5px rgba(0,0,0,0.26)
@@ -57,15 +56,24 @@ $height-header = 50px
     line-height $height-header
     box-sizing  border-box
     padding     0 5px
+    color       $color-header
+
+    a
+        color $color-header
 
 .md-app-title
     font-size   18px
     margin      0
-    color       $color-header
     font-weight normal
 
+.md-out-links
+    display  inline-block
+    right    20px
+    position absolute
+    font-size 25px
+
     a
-        color $color-header
+        margin-left 5px
 
 /*----------------------------------------------------------
  commentList
