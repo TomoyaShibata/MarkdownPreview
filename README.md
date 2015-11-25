@@ -1,9 +1,8 @@
-# ReactTraning
+# MarkdownPreview
 
 ![screen_shot](./screen_shot/1.png)
 
-This is MarkdownEditor utilizing a React.js and ES6.
-ReactTraning with ES6 is the coding and the tools for the practice of React.js.
+MarkdownPreview is a Web application that you can preview a document that was written in Markdown in real time.
 
 # Installation
 Clone or downlaod zip.
