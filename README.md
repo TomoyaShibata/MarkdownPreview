@@ -12,4 +12,4 @@ Please open the `index.html` in your browser.
 That's all.
 
 # Demo version in development
-http://tomoyashibata.github.io/ReactTraning/
+http://tomoyashibata.github.io/MarkdownPreview/
