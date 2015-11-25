@@ -72,24 +72,22 @@ export default class CommentForm extends React.Component {
         const lineNumbers       = this.state.newCommentTextLines;
 
         return (
-            <div id="commentForm" className="l-inline-block">
-                <div id="commentForm__box-edit-tag">
-                    <input type="text" />
-                </div>
-                <div id="commentForm__wrapper-edit" className="l-horizontal">
-                    <h2>New comment</h2>
-                    <div id="commentForm__wrapper-edit__box-edit">
-                        <div id="commentForm__wrapper-edit__box-edit__box-line-numbers" className="l-horizontal">
-                            {_.range(0, this.state.newCommentTextLines).map(l => <span className="l-line-number">{l + 1}</span>)}
+            <div id='commentForm' className='l-flex'>
+                <div id='commentForm__wrapper-edit'>
+                    <h2 className='md-heading-editor'>Edit area</h2>
+                    <div id='commentForm__wrapper-edit__box-edit' className='l-flex'>
+                        <div id='commentForm__wrapper-edit__box-edit__box-line-numbers'>
+                            {_.range(0, this.state.newCommentTextLines).map(l => <span className='l-line-number'>{l + 1}</span>)}
                         </div>
-                        <textarea id="commentForm__wrapper-edit__box-edit__textarea" onChange={this._changeNewCommentText.bind(this)} />
+                        <textarea id='commentForm__wrapper-edit__box-edit__textarea' onChange={this._changeNewCommentText.bind(this)} />
                     </div>
                 </div>
-                <div id="commentForm__box-preview" className="l-horizontal">
-                    <h2>Realtime preview</h2>
-                    <span dangerouslySetInnerHTML={{__html: markedCommentText}} />
+                <div id='commentForm__box-preview'>
+                    <h2 className='md-heading-preview'>Realtime preview</h2>
+                    <div className='md-preview'>
+                        <span dangerouslySetInnerHTML={{__html: markedCommentText}} />
+                    </div>
                 </div>
-                <button type="button" onClick={this._saveNewComment.bind(this)}>Save</button>
             </div>
         );
     }

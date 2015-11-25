@@ -124,8 +124,7 @@ var CommentBox = (function (_React$Component) {
         value: function render() {
             return _react2['default'].createElement(
                 'div',
-                { className: 'commentBox' },
-                _react2['default'].createElement(_CommentList2['default'], null),
+                { className: 'commentBox l-flex' },
                 _react2['default'].createElement(_Commentform2['default'], null)
             );
         }
@@ -216,6 +215,11 @@ var CommentList = (function (_React$Component) {
                 })
             });
         }
+    }, {
+        key: '_changeIsFocusInputSearchKeyword',
+        value: function _changeIsFocusInputSearchKeyword(isFocus, e) {
+            this.setState({ isFocusInputSeachKeyword: isFocus });
+        }
 
         /**
          * @override
@@ -227,18 +231,21 @@ var CommentList = (function (_React$Component) {
             // <CSSTransitionGroup transitionName='am-fade-opacity'>
             //     {this.state.searchedComments.map(s => <Comment key={s.commentTitle} commentTitle={s.commentTitle} />)}
             // </CSSTransitionGroup>
-
+            var spanSearchIcon = this.state.isFocusInputSeachKeyword ? _react2['default'].createElement('span', { className: 'fa fa-search is-focus' }) : _react2['default'].createElement('span', { className: 'fa fa-search' });
             return _react2['default'].createElement(
                 'nav',
-                { id: 'nav', className: 'l-inline-block' },
+                { id: 'nav' },
                 _react2['default'].createElement(
                     'ul',
                     { id: 'nav__comment-list' },
                     _react2['default'].createElement(
                         'li',
-                        { className: 'md-comment' },
-                        _react2['default'].createElement('input', { type: 'text', className: 'md-keyword-search-comment', onChange: this._searchIncremental.bind(this) }),
-                        _react2['default'].createElement('span', { className: 'fa fa-search' })
+                        { className: 'md-li-comment-search' },
+                        _react2['default'].createElement('input', { type: 'text', className: 'md-keyword-search-comment', placeholder: 'input search keyword',
+                            onChange: this._searchIncremental.bind(this),
+                            onFocus: this._changeIsFocusInputSearchKeyword.bind(this, true),
+                            onBlur: this._changeIsFocusInputSearchKeyword.bind(this, false) }),
+                        spanSearchIcon
                     ),
                     this.state.searchedComments.map(function (s) {
                         return _react2['default'].createElement(_Comment2['default'], { key: s.commentTitle, commentTitle: s.commentTitle });
@@ -371,26 +378,21 @@ var CommentForm = (function (_React$Component) {
 
             return _react2['default'].createElement(
                 'div',
-                { id: 'commentForm', className: 'l-inline-block' },
+                { id: 'commentForm', className: 'l-flex' },
                 _react2['default'].createElement(
                     'div',
-                    { id: 'commentForm__box-edit-tag' },
-                    _react2['default'].createElement('input', { type: 'text' })
-                ),
-                _react2['default'].createElement(
-                    'div',
-                    { id: 'commentForm__wrapper-edit', className: 'l-horizontal' },
+                    { id: 'commentForm__wrapper-edit' },
                     _react2['default'].createElement(
                         'h2',
-                        null,
-                        'New comment'
+                        { className: 'md-heading-editor' },
+                        'Edit area'
                     ),
                     _react2['default'].createElement(
                         'div',
-                        { id: 'commentForm__wrapper-edit__box-edit' },
+                        { id: 'commentForm__wrapper-edit__box-edit', className: 'l-flex' },
                         _react2['default'].createElement(
                             'div',
-                            { id: 'commentForm__wrapper-edit__box-edit__box-line-numbers', className: 'l-horizontal' },
+                            { id: 'commentForm__wrapper-edit__box-edit__box-line-numbers' },
                             _lodash2['default'].range(0, this.state.newCommentTextLines).map(function (l) {
                                 return _react2['default'].createElement(
                                     'span',
@@ -404,18 +406,17 @@ var CommentForm = (function (_React$Component) {
                 ),
                 _react2['default'].createElement(
                     'div',
-                    { id: 'commentForm__box-preview', className: 'l-horizontal' },
+                    { id: 'commentForm__box-preview' },
                     _react2['default'].createElement(
                         'h2',
-                        null,
+                        { className: 'md-heading-preview' },
                         'Realtime preview'
                     ),
-                    _react2['default'].createElement('span', { dangerouslySetInnerHTML: { __html: markedCommentText } })
-                ),
-                _react2['default'].createElement(
-                    'button',
-                    { type: 'button', onClick: this._saveNewComment.bind(this) },
-                    'Save'
+                    _react2['default'].createElement(
+                        'div',
+                        { className: 'md-preview' },
+                        _react2['default'].createElement('span', { dangerouslySetInnerHTML: { __html: markedCommentText } })
+                    )
                 )
             );
         }

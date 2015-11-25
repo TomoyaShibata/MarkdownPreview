@@ -71,6 +71,10 @@ export default class CommentList extends React.Component {
         });
     }
 
+    _changeIsFocusInputSearchKeyword(isFocus, e) {
+        this.setState({ isFocusInputSeachKeyword: isFocus });
+    }
+
     /**
      * @override
      */
@@ -79,13 +83,17 @@ export default class CommentList extends React.Component {
         // <CSSTransitionGroup transitionName='am-fade-opacity'>
         //     {this.state.searchedComments.map(s => <Comment key={s.commentTitle} commentTitle={s.commentTitle} />)}
         // </CSSTransitionGroup>
-
+        const spanSearchIcon = this.state.isFocusInputSeachKeyword ? <span className='fa fa-search is-focus'></span>
+                                                                   : <span className='fa fa-search'></span>;
         return (
-            <nav id='nav' className='l-inline-block'>
+            <nav id='nav'>
                 <ul id='nav__comment-list'>
-                    <li className='md-comment'>
-                        <input type='text' className='md-keyword-search-comment' onChange={this._searchIncremental.bind(this)} />
-                        <span className="fa fa-search"></span>
+                    <li className='md-li-comment-search'>
+                        <input type='text' className='md-keyword-search-comment' placeholder='input search keyword'
+                            onChange={this._searchIncremental.bind(this)}
+                            onFocus ={this._changeIsFocusInputSearchKeyword.bind(this, true)}
+                            onBlur  ={this._changeIsFocusInputSearchKeyword.bind(this, false)} />
+                        {spanSearchIcon}
                     </li>
                     {this.state.searchedComments.map(s => <Comment key={s.commentTitle} commentTitle={s.commentTitle} />)}
                 </ul>
