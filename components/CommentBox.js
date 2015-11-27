@@ -1,6 +1,7 @@
-import React       from 'react';
-import CommentList from './CommentList';
-import CommentForm from './Commentform';
+import React       from  'react';
+import CommentList from  './CommentList';
+import CommentForm from  './Commentform';
+import SaveButtones from './SaveButtones';
 
 /**
  * コメントボックスクラス

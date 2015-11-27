@@ -57,7 +57,7 @@ gulp.task('watch', function() {
     gulp.watch('styl/**/*.styl'   , ['stylus']);
     gulp.watch('./index.js'       , ['build']);
     gulp.watch('./index.html'     , ['build']);
-    gulp.watch('./components/*.js', ['build']);
+    gulp.watch('./components/**/*.js', ['build']);
 });
 
 // gulpコマンドで起動したときのデフォルトタスク
