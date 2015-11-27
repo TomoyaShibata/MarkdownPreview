@@ -24,7 +24,7 @@ export default class Header extends React.Component {
     render() {
         return (
             <div className='md-header'>
-                <h1 className='md-app-title l-inline-block'>MarkdownPreview In development version</h1>
+                <h1 className='md-app-title l-inline-block'>MarkdownPreview v.0.1.0</h1>
                 <div className='md-out-links'>
                     <span className='fa fa-info md-pointer' onClick={this._showModalWindow.bind(this)}></span>
                 </div>

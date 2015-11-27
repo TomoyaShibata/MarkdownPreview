@@ -739,7 +739,7 @@ var Header = (function (_React$Component) {
                 _react2['default'].createElement(
                     'h1',
                     { className: 'md-app-title l-inline-block' },
-                    'MarkdownPreview In development version'
+                    'MarkdownPreview v.0.1.0'
                 ),
                 _react2['default'].createElement(
                     'div',
