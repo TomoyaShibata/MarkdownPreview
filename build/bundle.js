@@ -601,14 +601,14 @@ var CommentForm = (function (_React$Component) {
     }, {
         key: '_doCommand',
         value: function _doCommand(e) {
-            // 4スペースを挿入する
+            // TAB キーが入力されたのならば4スペースを挿入する
             if (e.keyCode === 9) {
                 e.preventDefault();
                 var textarea = e.target;
                 var val = textarea.value;
                 var pos = textarea.selectionStart;
                 textarea.value = val.substr(0, pos) + '    ' + val.substr(pos, val.length);
-                // elem.setSelectionRange(pos + 1, pos + 1);
+                textarea.setSelectionRange(pos + 4, pos + 4);
             }
         }
 

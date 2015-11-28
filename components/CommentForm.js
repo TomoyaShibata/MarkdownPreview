@@ -86,14 +86,14 @@ export default class CommentForm extends React.Component {
      * @param  {Object} e イベントオブジェクト
      */
     _doCommand(e) {
-        // 4スペースを挿入する
+        // TAB キーが入力されたのならば4スペースを挿入する
         if (e.keyCode === 9) {
             e.preventDefault();
             const textarea = e.target;
             const val      = textarea.value;
             const pos      = textarea.selectionStart;
             textarea.value = val.substr(0, pos) + '    ' + val.substr(pos, val.length);
-            // elem.setSelectionRange(pos + 1, pos + 1);
+            textarea.setSelectionRange(pos + 4, pos + 4);
         }
     }
 
