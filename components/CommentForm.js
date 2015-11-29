@@ -117,7 +117,7 @@ export default class CommentForm extends React.Component {
                         </div>
                         <textarea id='commentForm__wrapper-edit__box-edit__textarea'
                                   onChange={this._changeNewCommentText.bind(this)}
-                                  onKeyDown={this._doCommand.bind(this)}/>
+                                  onKeyDown={this._doCommand.bind(this)} />
                     </div>
                 </div>
                 <div id='commentForm__box-preview'>
