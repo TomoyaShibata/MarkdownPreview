@@ -196,11 +196,11 @@ $border-color-nav-common = #e0e0e0
                 line-height  1.4
                 resize       none
                 box-sizing   border-box
-                height 'calc(100% - %s)' % $height-header
+                padding      5px
 
     &__box-preview
-        width      50%
-        height     100%
+        width  50%
+        height calc(100% - 41px)
 
         .md-heading-preview
             $height = 41px
@@ -213,7 +213,9 @@ $border-color-nav-common = #e0e0e0
             padding       0 5px
 
         .md-preview
-            padding 0 10px
+            padding    0 10px
+            height     100%
+            overflow-y auto
 
         p > code
             padding       0 5px

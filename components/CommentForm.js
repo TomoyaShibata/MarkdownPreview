@@ -17,8 +17,9 @@ export default class CommentForm extends React.Component {
          * @type {Object}
          */
         this.state = {
-            newCommentText : '',
-            newCommentTitle: ''
+            newCommentText      : ``,
+            newCommentTitle     : ``,
+            newCommentTextHeight: `50px`,
         };
     }
 
@@ -44,6 +45,10 @@ export default class CommentForm extends React.Component {
             newCommentText      : commentText,
             newCommentTextLength: commentText.length,
             newCommentTextLines : this._getTextLines(commentText)
+        });
+
+        this.setState({
+            newCommentTextHeight: `${this.state.newCommentTextLines*50}px`
         });
     }
 
@@ -103,6 +108,12 @@ export default class CommentForm extends React.Component {
     render() {
         const markedCommentText = Marked(this.state.newCommentText, { sanitize: true });
         const lineNumbers       = this.state.newCommentTextLines;
+        let   heightTextArea    = this.state.newCommentTextHeight;
+
+        if (this.state.newCommentTextLines === 0) {
+            heightTextArea = '100%';
+        }
+
 
         // @todo タイトル入力実装は確定まで隠蔽
         // <input type='text' className='md-input-commment-title l-block' onBlur={this._setNewCommentTitle.bind(this)} />
@@ -112,9 +123,6 @@ export default class CommentForm extends React.Component {
                 <div id='commentForm__wrapper-edit' refs='commentFormWrapperEdit'>
                     <h2 className='md-heading-editor'>Edit area</h2>
                     <div id='commentForm__wrapper-edit__box-edit' className='l-flex'>
-                        <div id='commentForm__wrapper-edit__box-edit__box-line-numbers'>
-                            {_.range(0, this.state.newCommentTextLines).map(l => <span className='l-line-number'>{l + 1}</span>)}
-                        </div>
                         <textarea id='commentForm__wrapper-edit__box-edit__textarea'
                                   onChange={this._changeNewCommentText.bind(this)}
                                   onKeyDown={this._doCommand.bind(this)} />

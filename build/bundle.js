@@ -148,7 +148,28 @@ var ChangeLogs = (function (_React$Component) {
                 _react2['default'].createElement(
                     'h2',
                     null,
-                    'v.0.1.0 - 2015.11.27'
+                    'v0.1.1 - いつにしよう'
+                ),
+                _react2['default'].createElement(
+                    'ul',
+                    null,
+                    _react2['default'].createElement(
+                        'li',
+                        null,
+                        'Removed a line number display. Because of the significant bug fixes necessary.'
+                    ),
+                    _react2['default'].createElement(
+                        'li',
+                        null,
+                        'Fixed a problem that does not move to position the cursor is expected when you use the Tab key.'
+                    ),
+                    _react2['default'].createElement('li', null),
+                    _react2['default'].createElement('li', null)
+                ),
+                _react2['default'].createElement(
+                    'h2',
+                    null,
+                    'v0.1.0 - 2015.11.27'
                 ),
                 _react2['default'].createElement(
                     'ul',
@@ -183,7 +204,7 @@ var ChangeLogs = (function (_React$Component) {
                 _react2['default'].createElement(
                     'h2',
                     null,
-                    'v.0.0.1 - 2015.11.25'
+                    'v0.0.1 - 2015.11.25'
                 ),
                 _react2['default'].createElement(
                     'p',
@@ -522,7 +543,8 @@ var CommentForm = (function (_React$Component) {
          */
         this.state = {
             newCommentText: '',
-            newCommentTitle: ''
+            newCommentTitle: '',
+            newCommentTextHeight: '50px'
         };
     }
 
@@ -552,6 +574,10 @@ var CommentForm = (function (_React$Component) {
                 newCommentText: commentText,
                 newCommentTextLength: commentText.length,
                 newCommentTextLines: this._getTextLines(commentText)
+            });
+
+            this.setState({
+                newCommentTextHeight: this.state.newCommentTextLines * 50 + 'px'
             });
         }
     }, {
@@ -620,6 +646,11 @@ var CommentForm = (function (_React$Component) {
         value: function render() {
             var markedCommentText = (0, _marked2['default'])(this.state.newCommentText, { sanitize: true });
             var lineNumbers = this.state.newCommentTextLines;
+            var heightTextArea = this.state.newCommentTextHeight;
+
+            if (this.state.newCommentTextLines === 0) {
+                heightTextArea = '100%';
+            }
 
             // @todo タイトル入力実装は確定まで隠蔽
             // <input type='text' className='md-input-commment-title l-block' onBlur={this._setNewCommentTitle.bind(this)} />
@@ -638,17 +669,6 @@ var CommentForm = (function (_React$Component) {
                     _react2['default'].createElement(
                         'div',
                         { id: 'commentForm__wrapper-edit__box-edit', className: 'l-flex' },
-                        _react2['default'].createElement(
-                            'div',
-                            { id: 'commentForm__wrapper-edit__box-edit__box-line-numbers' },
-                            _lodash2['default'].range(0, this.state.newCommentTextLines).map(function (l) {
-                                return _react2['default'].createElement(
-                                    'span',
-                                    { className: 'l-line-number' },
-                                    l + 1
-                                );
-                            })
-                        ),
                         _react2['default'].createElement('textarea', { id: 'commentForm__wrapper-edit__box-edit__textarea',
                             onChange: this._changeNewCommentText.bind(this),
                             onKeyDown: this._doCommand.bind(this) })
@@ -719,6 +739,10 @@ var Header = (function (_React$Component) {
         _classCallCheck(this, Header);
 
         _get(Object.getPrototypeOf(Header.prototype), 'constructor', this).call(this, props);
+
+        this.state = {
+            appTitle: document.title
+        };
     }
 
     _createClass(Header, [{
@@ -739,7 +763,7 @@ var Header = (function (_React$Component) {
                 _react2['default'].createElement(
                     'h1',
                     { className: 'md-app-title l-inline-block' },
-                    'MarkdownPreview v.0.1.0'
+                    this.state.appTitle
                 ),
                 _react2['default'].createElement(
                     'div',
