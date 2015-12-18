@@ -15,8 +15,9 @@ export default class ChangeLogs extends React.Component {
     render() {
         return (
             <div className='md-modal-change-logs'>
-                <h2>v0.1.1 - 2015.12.18</h2>
+                <h2>v0.2.0 - 2015.12.18</h2>
                 <ul>
+                    <li>Added the possible to move the center line.</li>
                     <li>Removed a line number display. Because of the significant bug fixes necessary.</li>
                     <li>Fixed a problem that does not move to position the cursor is expected when you use the <code>Tab key.</code></li>
                 </ul>

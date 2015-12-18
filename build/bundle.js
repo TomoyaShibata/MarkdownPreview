@@ -148,11 +148,16 @@ var ChangeLogs = (function (_React$Component) {
                 _react2['default'].createElement(
                     'h2',
                     null,
-                    'v0.1.1 - 2015.12.18'
+                    'v0.2.0 - 2015.12.18'
                 ),
                 _react2['default'].createElement(
                     'ul',
                     null,
+                    _react2['default'].createElement(
+                        'li',
+                        null,
+                        'Added the possible to move the center line.'
+                    ),
                     _react2['default'].createElement(
                         'li',
                         null,
