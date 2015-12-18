@@ -189,7 +189,7 @@ export default class CommentForm extends React.Component {
                 <div id='commentForm__wrapper-edit' ref='commentFormWrapperEdit'>
                     <h2 className='md-heading-editor'>Edit area</h2>
                     <div id='commentForm__wrapper-edit__box-edit' className='l-flex'>
-                        <textarea id='commentForm__wrapper-edit__box-edit__textarea'
+                        <textarea className='md-textarea-markdown'
                                   ref='textareaCommentForm'
                                   onChange={this._changeNewCommentText.bind(this)} />
                     </div>

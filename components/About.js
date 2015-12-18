@@ -15,7 +15,7 @@ export default class About extends React.Component {
     render() {
         return (
             <div className='md-modal-app-about'>
-                <p>"Markdownpreview" makes a real-time preview from your script writent in Markdown syntax.</p>
+                <p>"MarkdownPreview" makes a real-time preview from your script writent in Markdown syntax.</p>
                 <p>This application has been developed just for the practice of coding with react.js. Therefore, please note that a lot of bugs may still remain.</p>
                 <p>Thanks.</p>
                 <ul>
